@@ -1,20 +1,11 @@
-FROM python:3.10
+# syntax=docker/dockerfile:1
+FROM python:3.8
 MAINTAINER Gregory Gulyaev
 
 ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED 1
-
-RUN apt-get update && apt-get install -y sudo vim && apt-get upgrade -y
-
-COPY ./requirements.txt /requirements.txt
-RUN pip install --upgrade pip -r /requirements.txt
-
-RUN mkdir /app
-WORKDIR /app
-COPY ./app /app
-
-#RUN adduser --disabled-password --gecos '' python
-#RUN adduser python sudo
-#RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-#
-#USER python
+ENV PYTHONUNBUFFERED=1
+WORKDIR /code
+RUN pip install --upgrade pip
+COPY requirements.txt /code/
+RUN pip install -r requirements.txt
+COPY . /code/

@@ -8,14 +8,12 @@ Recipe Book on Django and Docker
 
 Создайте `.env` файл в корне репозитория:
 
-
+```bash
+cp .env.dist .env
+```
 
 ```bash
 docker-compose stop
 docker rmi $(docker images -q)
-docker rm $(docker ps -a -q)
-```
-
-```bash
-cp .env.dist .envdocker
+вщслуквщслук
 ```
